@@ -1,10 +1,39 @@
 "use client";
 import { User } from "@prisma/client";
-import { Table } from "antd";
+import { Button, Table, message } from "antd";
 import dayjs from "dayjs";
 import React from "react";
+import { ToggleUserAdminStatus, DeleteUser } from "@/actions/users";
 
 function UsersTable({ users }: { users: User[] }) {
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const handleToggleAdmin = async (id: string, isAdmin: boolean) => {
+    try {
+      setLoading(true);
+      const newRole = isAdmin ? "user" : "admin";
+      const response = await ToggleUserAdminStatus(id, newRole);
+      if (response.error) throw new Error(response.error);
+      message.success(response.message);
+    } catch (error: any) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDeleteUser = async (id: string) => {
+    try {
+      setLoading(true);
+      const response = await DeleteUser(id);
+      if (response.error) throw new Error(response.error);
+      message.success(response.message);
+    } catch (error: any) {
+      message.error(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   const columns = [
     {
       title: "Profile Pic",
@@ -47,7 +76,7 @@ function UsersTable({ users }: { users: User[] }) {
     },
     {
       title: "Is Admin",
-      dataIndex: "status",
+      dataIndex: "isAdmin",
       render(isAdmin: boolean) {
         if (isAdmin) {
           return "Yes";
@@ -58,9 +87,27 @@ function UsersTable({ users }: { users: User[] }) {
     {
       title: "Actions",
       dataIndex: "actions",
-      render(action: any, record: User) {
-        return <></>
-      },
+      render: (_: any, record: User) => (
+        <div className="flex gap-5">
+          <Button
+            size="small"
+            onClick={() =>
+              handleToggleAdmin(record.id, record.isAdmin)
+            }
+            loading={loading}
+          >
+            {record.isAdmin ? "Remove Admin" : "Make Admin"}
+          </Button>
+          <Button
+            size="small"
+            danger
+            onClick={() => handleDeleteUser(record.id)}
+            loading={loading}
+          >
+            Remove User
+          </Button>
+        </div>
+      ),
     },
   ];
   return (
