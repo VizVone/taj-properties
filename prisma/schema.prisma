@@ -65,6 +65,7 @@ model Property {
   facing           String
   age              Int
   images           String[]
+  brokerOrOwner    String
   ownerName        String
   ownerEmail       String
   ownerPhone       String

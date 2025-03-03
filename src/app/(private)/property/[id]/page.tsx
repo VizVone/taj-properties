@@ -99,9 +99,13 @@ async function PropertyPage({ params: { id } }: Props) {
 
           {property.showOwnerContact && (
             <div className="flex flex-col gap-1 mt-7">
-              {getSectionTitle("Owner Details")}
+              {getSectionTitle("Broker/Owner Details")}
               {getAttributeDetails({
-                name: "Owner name",
+                name: "Broker or Owner",
+                value: property.brokerOrOwner,
+              })}
+              {getAttributeDetails({
+                name: "Name",
                 value: property.ownerName,
               })}
               {getAttributeDetails({

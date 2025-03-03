@@ -115,6 +115,21 @@ function Contact({
             ]}
           />
         </Form.Item>
+        <Form.Item
+          name="brokerOrOwner"
+          label="Broker Or Owner"
+          rules={[
+            {
+              required: true,
+              message: "Please input broker or owner!",
+            },
+          ]}
+        >
+          <Select options={[
+            { label: "Owner", value: "Owner" },
+            { label: "Broker", value: "Broker" },
+          ]} />
+        </Form.Item>
       </div>
       <div className="flex justify-end gap-5 mt-7">
         <Button
