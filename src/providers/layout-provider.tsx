@@ -58,7 +58,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
     if (isPublicRoute) return null;
     return (
       <div>
-        <div className="bg-black p-3 flex justify-between items-center rounded-b">
+        <div className="bg-black/90 backdrop-blur-md p-3 flex justify-between items-center rounded-b shadow-xl">
           <h1
             className="lg:mx-20 text-2xl text-white font-bold cursor-pointer"
             onClick={() => {
@@ -68,7 +68,8 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
             Taj Properties
           </h1>
 
-          <div className="lg:mx-20 bg-white py-2 px-5 rounded-2xl flex items-center gap-5">
+          <div className="mx-5 sm:mx-10 lg:mx-20 bg-white py-1.5 px-3 sm:py-2 sm:px-4 lg:py-2 lg:px-5 rounded-xl flex items-center gap-3 sm:gap-4 lg:gap-5">
+
             <Dropdown
               menu={{
                 items: menuToShow.map((item: any) => ({

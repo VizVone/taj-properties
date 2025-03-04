@@ -5,7 +5,7 @@ export const GetStripeClientSecret = async (amount: number) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount * 100,
       currency: "usd",
-      description : "Payment for the sheyproperties.com",
+      description : "Payment for the taj-properties.com",
     });
 
     // return client secret

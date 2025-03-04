@@ -49,7 +49,7 @@ function PropertyQueries({
     {
       title: "Quote Amount",
       dataIndex: "quoteAmount",
-      render: (quoteAmount: number) => `$ ${quoteAmount}`,
+      render: (quoteAmount: number) => `₹ ${quoteAmount}`,
     },
     {
       title: "Message",
@@ -71,7 +71,25 @@ function PropertyQueries({
       width={1000}
       footer={null}
     >
-      <Table columns={columns} dataSource={queries} loading={loading} />
+      <div className="p-4">
+        {/* Table for large screens */}
+        <div className="hidden md:block">
+          <Table columns={columns} dataSource={queries} loading={loading} />
+        </div>
+
+        {/* Card layout for small screens */}
+        <div className="md:hidden space-y-4">
+          {queries.map((query) => (
+            <div key={query.id} className="border p-4 rounded-lg shadow-md bg-white">
+              <p className="font-semibold">Customer: {query.name}</p>
+              <p className="text-gray-600 text-sm">Mobile: {query.phoneNumber}</p>
+              <p className="text-gray-600 text-sm">Quote Amount: $ {query.quoteAmount}</p>
+              <p className="text-gray-600 text-sm">Message: {query.message}</p>
+              <p className="text-gray-600 text-sm">Date & Time: {dayjs(query.createdAt).format("DD MMM YYYY hh:mm A")}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </Modal>
   );
 }

@@ -36,6 +36,11 @@ input {
   font-size: 14px !important;
 }
 
+.ant-btn {
+  @apply rounded-xl; /* Adds subtle curves to all Ant Design buttons */
+}
+
+
 table {
   border: 1px solid #b5b5b5 !important;
   margin-top: 10px !important;
