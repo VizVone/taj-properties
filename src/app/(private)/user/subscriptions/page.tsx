@@ -23,7 +23,7 @@ async function SubscriptionsPage() {
           }
           return (
             <div
-              className={`flex flex-col gap-5 justify-between p-5 border rounded  border-solid
+              className={`flex flex-col gap-5 justify-between p-5 border rounded-2xl  border-solid
              ${isSelected ? "border-primary border-2" : "border-gray-300"}
             `}
             >

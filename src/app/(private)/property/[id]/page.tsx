@@ -46,7 +46,7 @@ async function PropertyPage({ params: { id } }: Props) {
 
       <h1 className="text-2xl font-bold text-primary my-5">{property.name}</h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-10">
         <div className="col-span-2">
           <Carousel autoplay>
             {property.images.map((image) => (
@@ -54,17 +54,18 @@ async function PropertyPage({ params: { id } }: Props) {
                 <img
                   src={image}
                   alt={image}
-                  className="w-full h-96 lg:h-[450px] object-cover rounded-md"
+                  className="w-full h-96 lg:h-[450px] object-cover rounded-2xl"
                 />
               </div>
             ))}
           </Carousel>
 
           <h1 className="text-2xl font-bold text-gray-700 mt-7">₹ {property.price} / {property.status}</h1>
-
-          <p className="text-sm text-gray-600 mt-7">{property.description}</p>
+          <br></br>
+          <hr></hr>
+          <p className="text-sm text-gray-600 mt-7"><b>Property Description:</b> {property.description}</p>
         </div>
-        <div className="border border-solid border-gray-300 rounded p-5">
+        <div className="border border-solid border-gray-300 rounded-2xl p-3 sm:p-5 w-full sm:max-w-lg mx-auto">
           <div className="flex flex-col gap-1">
             {getSectionTitle("Amenities")}
             {getAttributeDetails({

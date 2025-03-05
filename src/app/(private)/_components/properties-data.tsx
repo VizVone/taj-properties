@@ -13,7 +13,7 @@ async function PropertiesData({ searchParams }: { searchParams: any }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
       {properties.map((property) => (
-        <div className="border rounded border-solid border-gray-300 overflow-hidden">
+        <div className="border border-solid border-gray-300 overflow-hidden rounded-2xl">
           <img
             src={property.images[0]}
             alt=""
@@ -34,7 +34,7 @@ async function PropertiesData({ searchParams }: { searchParams: any }) {
               {/* console.log(typeof property.price, property.price); */}
             </span>
             <Link
-              className="text-sm text-primary font-semibold no-underline"
+              className="text-sm text-primary font-semibold no-underline border-solid p-1.5 rounded-2xl"
               href={`/property/${property.id}`}
             >
               View Details

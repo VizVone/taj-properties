@@ -37,7 +37,7 @@ input {
 }
 
 .ant-btn {
-  @apply rounded-xl; /* Adds subtle curves to all Ant Design buttons */
+  @apply rounded-2xl; /* Adds subtle curves to all Ant Design buttons */
 }
 
 
