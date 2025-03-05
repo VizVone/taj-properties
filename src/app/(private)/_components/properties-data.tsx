@@ -13,7 +13,7 @@ async function PropertiesData({ searchParams }: { searchParams: any }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
       {properties.map((property) => (
-        <div className="border border-solid border-gray-300 overflow-hidden rounded-2xl">
+        <div className="border border-solid border-gray-300 overflow-hidden rounded-2xl shadow-lg">
           <img
             src={property.images[0]}
             alt=""
