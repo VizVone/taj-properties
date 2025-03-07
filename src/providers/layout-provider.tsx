@@ -78,7 +78,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
                     label: (
                       <button
                         onClick={() => router.push(item.path)}
-                        className="text-left w-full px-4 py-2 rounded-2xl bg-white hover:bg-gray-200 active:bg-gray-300"
+                        className="text-center w-full px-4 py-2 rounded-2xl bg-white hover:bg-gray-200 active:bg-gray-300"
                       >
                         {item.name}
                       </button>
@@ -86,7 +86,7 @@ function LayoutProvider({ children }: { children: React.ReactNode }) {
                   })),
                 }}
               >
-                <Button className="text-primary hover:text-primary" type="link">
+                <Button className="text-black hover:text-primary" type="link">
                   Menu
                 </Button>
               </Dropdown>

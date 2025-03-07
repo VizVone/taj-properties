@@ -56,7 +56,6 @@ export const subscriptionPlans = [
       "Property Details",
       "3 Images per Property",
       "3 Properties Limit",
-      "Property Search",
     ],
   },
   {
@@ -65,13 +64,11 @@ export const subscriptionPlans = [
     propertiesLimit: 10,
     imagesPerPropertyLimit: 5,
     features: [
+      "3 Months",
       "Property Listing",
       "Property Details",
       "5 Images per Property",
       "10 Properties Limit",
-      "Property Search",
-      "AI Support",
-      "24/7 Support on Email",
     ],
   },
   {
@@ -80,13 +77,11 @@ export const subscriptionPlans = [
     propertiesLimit: 100,
     imagesPerPropertyLimit: 15,
     features: [
+      "1 Year",
       "Property Listing",
       "Property Details",
       "15 Images per Property",
       "100 Properties Limit",
-      "Property Search",
-      "AI Support",
-      "24/7 Support on Email",
       "24/7 Support on Phone",
       "Personal Account Manager",
     ],

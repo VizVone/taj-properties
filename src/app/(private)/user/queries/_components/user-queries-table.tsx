@@ -14,7 +14,7 @@ function UserQueriesTable({ queries }: { queries: (Query & { property: Property 
     {
       title: "Quote Amount",
       dataIndex: "quoteAmount",
-      render: (quoteAmount: number) => `$ ${quoteAmount}`,
+      render: (quoteAmount: number) => `₹ ${quoteAmount}`,
     },
     {
       title: "Message",
@@ -40,7 +40,7 @@ function UserQueriesTable({ queries }: { queries: (Query & { property: Property 
         {queries.map((query) => (
           <div key={query.id} className="bg-white shadow-md p-4 rounded-lg">
             <p className="text-gray-800 font-semibold">Property: {query.property.name}</p>
-            <p className="text-gray-600">Quote Amount: $ {query.quoteAmount}</p>
+            <p className="text-gray-600">Quote Amount: ₹ {query.quoteAmount}</p>
             <p className="text-gray-600">Message: {query.message}</p>
             <p className="text-gray-600">Date: {dayjs(query.createdAt).format("DD MMM YYYY hh:mm A")}</p>
           </div>
