@@ -1,0 +1,10 @@
+{
+    "name": "Taj Properties",
+    "short_name": "Taj Properties",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "description": "Onestop for all your property needs."
+  }
+  
