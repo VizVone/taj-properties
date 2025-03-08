@@ -31,13 +31,14 @@ model User {
 }
 
 model Subscription {
-  id        String   @id @default(cuid()) @map("_id")
-  userId    String
-  user      User     @relation(fields: [userId], references: [id])
-  plan      Json
-  paymentId String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(cuid()) @map("_id")
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  plan       Json     // ✅ Storing as JSON
+  paymentId  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  expiresAt  DateTime // ✅ Adding the expiration date
 }
 
 // property model

@@ -7,6 +7,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  top: 0px !important;
+  position: static !important;
 }
 
 * {
@@ -55,4 +57,92 @@ table {
 
 .property-main-image:hover {
   transform: scale(1.1);
+}
+
+/* Hide Google branding */
+.translate-widget .skiptranslate,
+.translate-widget iframe {
+  display: none !important;
+}
+
+/* Floating Button */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #000000;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dropdown Menu */
+.language-dropdown {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 150px;
+  text-align: left;
+}
+
+.language-dropdown p {
+  margin: 5px 0;
+  padding: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 5px;
+}
+
+.language-dropdown p:hover {
+  background: #000000;
+  color: white;
+}
+body > .skiptranslate {
+  display: none !important;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #000000;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+  opacity: 0.8;
+}
+
+.scroll-to-top:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Hide Google Translate loading logo */
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf-ti6hGc {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }

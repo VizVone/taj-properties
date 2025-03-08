@@ -59,7 +59,7 @@ export const subscriptionPlans = [
     ],
   },
   {
-    name: "Standard",
+    name: "3-month",
     price: 10,
     propertiesLimit: 10,
     imagesPerPropertyLimit: 5,
@@ -72,7 +72,7 @@ export const subscriptionPlans = [
     ],
   },
   {
-    name: "Premium",
+    name: "1-year",
     price: 25,
     propertiesLimit: 100,
     imagesPerPropertyLimit: 15,

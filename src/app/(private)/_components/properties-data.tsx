@@ -4,16 +4,30 @@ import Link from "next/link";
 import React from "react";
 
 async function PropertiesData({ searchParams }: { searchParams: any }) {
+  const { search, ...filters } = searchParams;
+
+  // Build search conditions
+  const searchConditions = search
+    ? {
+        OR: [
+          { name: { contains: search, mode: "insensitive" } },
+          { city: { contains: search, mode: "insensitive" } },
+          { landmark: { contains: search, mode: "insensitive" } },
+        ],
+      }
+    : {};
+
   const properties: Property[] = await prisma.property.findMany({
-    where: searchParams,
+    where: { ...filters, ...searchConditions },
     orderBy: {
       updatedAt: "desc",
     },
   });
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
       {properties.map((property) => (
-        <div className="border border-solid border-gray-300 overflow-hidden rounded-2xl shadow-lg">
+        <div key={property.id} className="border border-solid border-gray-300 overflow-hidden rounded-2xl shadow-lg">
           <img
             src={property.images[0]}
             alt=""
@@ -27,11 +41,9 @@ async function PropertiesData({ searchParams }: { searchParams: any }) {
               {property.city} , {property.landmark}
             </span>
           </div>
-
           <div className="p-3 bg-gray-100 flex justify-between items-center rounded-b">
             <span className="text-primary text-xl font-bold">
               ₹ {property.price}
-              {/* console.log(typeof property.price, property.price); */}
             </span>
             <Link
               className="text-sm text-primary font-semibold no-underline border-solid p-1.5 rounded-2xl"

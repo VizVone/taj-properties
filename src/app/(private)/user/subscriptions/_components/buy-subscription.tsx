@@ -10,7 +10,7 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
 );
 
-function BuySubScription({ plan }: { plan: any }) {
+function BuySubScription({ plan, isActive }: { plan: any, isActive: boolean }) {
   const [clientSecret, setClientSecret] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
   const [showCheckoutForm, setShowCheckoutForm] =
@@ -29,15 +29,16 @@ function BuySubScription({ plan }: { plan: any }) {
       setLoading(false);
     }
   };
+
   return (
     <div>
       <Button
         block
-        disabled={plan.price === 0}
+        disabled={isActive || plan.price === 0}  // Disable the button if the plan is active
         onClick={getClientSecret}
         loading={loading}
       >
-        Buy Now
+        {isActive ? "Active Subscription" : "Buy Now"}
       </Button>
 
       {clientSecret && showCheckoutForm && (

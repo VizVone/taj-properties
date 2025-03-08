@@ -16,16 +16,18 @@ function Filters({ searchParams }: { searchParams: any }) {
   const pathname = usePathname();
 
   const onFinish = (values: any) => {
-    // Remove undefined/null values
-    const formattedData: any = {};
-    Object.keys(values).forEach((key) => {
-      if (values[key]) {
-        formattedData[key] = values[key];
+    // Keep previous search parameters
+    const updatedSearchParams = { ...searchParams, ...values };
+  
+    // Remove any empty values
+    Object.keys(updatedSearchParams).forEach((key) => {
+      if (!updatedSearchParams[key]) {
+        delete updatedSearchParams[key];
       }
     });
-
+  
     // Construct query string
-    const queryString = new URLSearchParams(formattedData).toString();
+    const queryString = new URLSearchParams(updatedSearchParams).toString();
     router.push(`${pathname}?${queryString}`);
     setShowFiltersModal(false);
   };
@@ -48,21 +50,25 @@ function Filters({ searchParams }: { searchParams: any }) {
                       delete newSearchParams[key];
 
                       // Construct query string
-                      const queryString = new URLSearchParams(newSearchParams).toString();
+                      const queryString = new URLSearchParams(
+                        newSearchParams
+                      ).toString();
                       router.push(`${pathname}?${queryString}`);
                     }}
                     closable
                     closeIcon
                     className="flex items-center gap-1 border border-solid border-primary"
                   >
-                    <div className="span text-primary text-sm ">{searchParams[key]}</div>
+                    <div className="span text-primary text-sm ">
+                      {searchParams[key]}
+                    </div>
                   </Tag>
                 </div>
               ))}
             </div>
           )}
         </div>
-        <div className="flex flex-wrap gap-3 md:gap-5">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-3 md:gap-5">
           <Button
             onClick={() => {
               router.push(pathname);

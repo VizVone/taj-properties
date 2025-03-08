@@ -10,9 +10,9 @@ import { useRouter } from "next/navigation";
 import { SaveSubscription } from "@/actions/subscriptions";
 
 interface Props {
-  plan: any;
+  plan: { name: "3-month" | "1-year" }; // ✅ Ensure plan.name has the correct type
   showCheckoutForm: boolean;
-  setShowCheckoutForm: any;
+  setShowCheckoutForm: (value: boolean) => void;
 }
 
 function CheckoutForm({ plan, showCheckoutForm, setShowCheckoutForm }: Props) {
@@ -22,11 +22,12 @@ function CheckoutForm({ plan, showCheckoutForm, setShowCheckoutForm }: Props) {
   const elements = useElements();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       setLoading(true);
-      event.preventDefault();
 
       if (!stripe || !elements) {
+        message.error("Stripe is not initialized");
         return;
       }
 
@@ -42,10 +43,17 @@ function CheckoutForm({ plan, showCheckoutForm, setShowCheckoutForm }: Props) {
         message.error(result.error.message);
       } else {
         message.success("Payment successful");
-        await SaveSubscription({ paymentId: result.paymentIntent.id, plan });
+
+        // ✅ Ensure we only pass valid plan types
+        await SaveSubscription({
+          paymentId: result.paymentIntent.id,
+          plan: plan.name, // ✅ No type error anymore
+        });
+
         message.success("Subscription purchased successfully");
         router.push("/user/account");
       }
+
       setShowCheckoutForm(false);
     } catch (error: any) {
       message.error(error.message);
@@ -53,6 +61,7 @@ function CheckoutForm({ plan, showCheckoutForm, setShowCheckoutForm }: Props) {
       setLoading(false);
     }
   };
+
   return (
     <Modal
       title="Complete your subscription purchase"
