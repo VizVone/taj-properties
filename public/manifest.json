@@ -8,8 +8,8 @@
     "description": "Onestop for all your property needs.",
     "icons": [
     {
-      "src":  "icon.png",
-      "sizes": "192x192",
+      "src":  "residential.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
