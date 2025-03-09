@@ -46,9 +46,7 @@ const GoogleTranslate = () => {
       selectElement.value = lang;
       selectElement.dispatchEvent(new Event("change"));
     }
-    setTimeout(() => {
-      window.location.reload(); // Refresh page after language selection
-    }, 800);
+    
     setSelectedLang(label); // Update displayed language
     setIsOpen(false); // Close dropdown
   };
